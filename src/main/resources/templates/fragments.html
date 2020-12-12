@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+    <th:block th:fragment="css">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.css}"/>
+        <link rel="stylesheet" th:href="@{/css/navbar.css}"/>
+    </th:block>
+</head>
+<body>
+<th:block th:fragment="navbar">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">simple-calendar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" aria-current="page" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/event/new}">New Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/event/get/all}">All Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true" th:href="@{/calendar}">Calendar</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</th:block>
+
+<th:block th:fragment="scripts">
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Event ' + ${event.getName()}">Event</title>
+    <th:block th:replace="fragments :: css"/>
+</head>
+<body>
+<header>
+    <th:block th:replace="fragments :: navbar"/>
+</header>
+<main>
+    <div class="container">
+        <div class="row col-md-12 list-container">
+            <div class="row col-md-12">
+                <h1 th:text="'Event ' + ${event.getName()}">Event</h1>
+            </div>
+            <div class="row col-md-6 list-group">
+                <div class="list-group-item">Id</div>
+                <div class="list-group-item">Name</div>
+                <div class="list-group-item">Date</div>
+                <div class="list-group-item">Time</div>
+                <div class="list-group-item">Description</div>
+                <div class="list-group-item">Priority</div>
+                <div class="list-group-item">Created</div>
+            </div>
+            <div class="row col-md-6 list-group">
+                <div class="list-group-item" th:text="${event.getId()}"></div>
+                <div class="list-group-item" th:text="${event.getName()}"></div>
+                <div class="list-group-item" th:text="${event.getDate()}"></div>
+                <div class="list-group-item" th:text="${event.getTime()}"></div>
+                <div class="list-group-item" th:text="${event.getDescription()}"></div>
+                <div class="list-group-item" th:text="${event.getPriority().getName()}"></div>
+                <div class="list-group-item" th:text="${event.getCreated()}"></div>
+            </div>
+            <div class="row col-md-12">
+                <a th:href="@{'/event/delete/'+${event.getId()}}" class="col-md-6">
+                    <button type="button" class="btn btn-danger">Remove</button>
+                </a>
+                <a th:href="@{'/event/edit/'+${event.getId()}}" class="col-md-6">
+                    <button type="button" class="btn btn-primary">Edit</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <th:block th:replace="fragments :: scripts"/>
+</footer>
+</body>
+</html>

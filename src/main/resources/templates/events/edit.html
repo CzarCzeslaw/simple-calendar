@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Editing ' + ${dto.getName()}">Edit event</title>
+    <th:block th:replace="fragments :: css"/>
+</head>
+<body>
+<header>
+    <th:block th:replace="fragments :: navbar"/>
+</header>
+<main>
+    <div class="container">
+        <h1 th:text="'Editing ' + ${dto.getName()}">Edit event</h1>
+        <form th:action="@{/event/edit}" method="post" th:object="${dto}">
+            <div class="row col-12 form-container">
+                <div class="row col-md-12 form-input-row">
+                    <div class="col-md-6">
+                        <label for="id">Id:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control disabled" id="id" th:placeholder="${dto.getEditId()}"
+                               th:field="*{editId}"/>
+                    </div>
+                </div>
+                <div class="row col-md-12 form-input-row">
+                    <div class="col-md-6">
+                        <label for="name">Name:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" id="name" th:field="*{name}"
+                               th:placeholder="${dto.getName()}">
+                    </div>
+                </div>
+                <div class="row col-md-12 form-input-row">
+                    <div class="col-md-6">
+                        <label for="date">Date:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="date" id="date" th:placeholder="${dto.getDate()}"
+                               th:field="*{date}">
+                    </div>
+                </div>
+                <div class="row col-md-12 form-input-row">
+                    <div class="col-md-6">
+                        <label for="time">Time:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="time" id="time" th:placeholder="${dto.getDate()}"
+                               th:field="*{time}">
+                    </div>
+                </div>
+                <div class="row col-md-12 form-input-row">
+                    <div class="col-md-6">
+                        <label for="description">Description:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" id="description" th:placeholder="*{description}"
+                               th:field="*{description}">
+                    </div>
+                </div>
+                <div class="row col-md-12 form-input-row">
+                    <div class="col-md-6">
+                        <label for="priorityId">Priority:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <select id="priorityId" th:field="*{priority}">
+                            <option th:each="priorities : ${T(pl.czarczeslaw.simplecalendar.model.Priority).values()}"
+                                    th:value="${priorities.name()}" th:field="*{priority}"
+                                    th:text="${priorities.getName()}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row col-md-12 form-button-row">
+                    <div class="col-md-6">
+                        <button type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary offset-3 col-md-6">Update</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+<footer>
+    <th:block th:replace="fragments :: scripts"/>
+</footer>
+</body>
+</html>

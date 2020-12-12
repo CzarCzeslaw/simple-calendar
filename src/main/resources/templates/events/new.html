@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New event</title>
+    <th:block th:replace="fragments :: css"/>
+</head>
+<body>
+<header>
+    <th:block th:replace="fragments :: navbar"/>
+</header>
+<main>
+    <div class="container">
+        <h1>New event</h1>
+        <form class="row col-12 form-container" th:action="@{/event/new}" method="post" th:object="${dto}">
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="name">Name:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="name" th:field="*{name}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="date">Date:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="date" id="date" th:field="*{date}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="time">Time:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="time" id="time" th:field="*{time}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="description">Description:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="description" th:field="*{description}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label th:for="priorityId">Priority:</label>
+                </div>
+                <div class="col-md-6">
+                    <select name="color" th:id="priorityId" th:field="*{priority}">
+                        <option th:each="priorities : ${T(pl.czarczeslaw.simplecalendar.model.Priority).values()}"
+                                th:value="${priorities.name()}" th:field="*{priority}"
+                                th:text="${priorities.getName()}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row col-md-12 form-button-row">
+                <div class="col-md-6">
+                    <button th:type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>
+                </div>
+                <div class="col-md-6">
+                    <button th:type="submit" th:value="submit" class="btn btn-primary offset-3 col-md-6">Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+<footer>
+    <th:block th:replace="fragments :: scripts"/>
+</footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>simple-calendar</title>
+    <th:block th:replace="fragments :: css"/>
+</head>
+<body>
+<header>
+    <th:block th:replace="fragments :: navbar"/>
+</header>
+<main>
+    <div class="container">
+        <h1>simple-calendar</h1>
+        <h2>you can:</h2>
+        <ul>
+            <li><a class="btn-link" th:href="@{/event/new}">Adding new events to calendar</a></li>
+            <li><a class="btn-link" th:href="@{/event/get/all}">See all events in calendar</a></li>
+            <li><a class="btn-link" th:href="@{/event/get/today}">See all events to do today</a></li>
+            <li><a class="btn-link" th:href="@{/event/get/past}">See events from past</a></li>
+        </ul>
+    </div>
+</main>
+<footer>
+    <th:block th:replace="fragments :: scripts"/>
+</footer>
+</body>
+</html>
