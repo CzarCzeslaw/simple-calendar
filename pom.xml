@@ -15,7 +15,7 @@
     <description>Project of simple calendar to use online</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>15</java.version>
         <org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
         <lombok.version>1.18.16</lombok.version>
         <lombok-mapstruct-binding.version>0.1.0</lombok-mapstruct-binding.version>
@@ -125,6 +125,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <release>11</release>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.mapstruct</groupId>
