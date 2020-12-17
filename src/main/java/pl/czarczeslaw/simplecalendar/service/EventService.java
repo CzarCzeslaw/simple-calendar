@@ -1,6 +1,6 @@
 package pl.czarczeslaw.simplecalendar.service;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.czarczeslaw.simplecalendar.mapper.EventMapper;
 import pl.czarczeslaw.simplecalendar.model.Event;
@@ -10,14 +10,12 @@ import pl.czarczeslaw.simplecalendar.repository.EventRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.chrono.ChronoLocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class EventService {
     private final EventRepository eventRepository;
     private final EventMapper eventMapper;

@@ -1,26 +1,21 @@
 package pl.czarczeslaw.simplecalendar.controller;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.czarczeslaw.simplecalendar.mapper.EventMapper;
 import pl.czarczeslaw.simplecalendar.model.Event;
-import pl.czarczeslaw.simplecalendar.model.Priority;
 import pl.czarczeslaw.simplecalendar.model.dto.EventDto;
 import pl.czarczeslaw.simplecalendar.model.dto.EventEditDto;
 import pl.czarczeslaw.simplecalendar.service.EventService;
 
-import javax.persistence.EntityNotFoundException;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.Optional;
 
 @Controller
 @RequestMapping(path = "/event")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class EventController {
     private final EventService eventService;
     private final EventMapper eventMapper;
@@ -69,7 +64,7 @@ public class EventController {
     }
 
     @PostMapping(path = "/new")
-    public String createEvent(@Valid @ModelAttribute("dto") EventDto dto, BindingResult bindingResult) throws Exception {
+    public String createEvent(@Valid @ModelAttribute("dto") EventDto dto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "/events/new";
         } else {
